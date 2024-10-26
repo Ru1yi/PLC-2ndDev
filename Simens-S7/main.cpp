@@ -4,21 +4,16 @@
 
 int main(int argc, char *argv[])
 {
-   /* QApplication a(argc, argv);
-    PLC_TEST w;
-    w.show();
-    return a.exec();*/
-    
-    GlobalPlc = new PlcControl(NULL);
+   GlobalPlc = new PlcControl(NULL);
     bool ret = GlobalPlc->PlcConnectInit();
 
-    //GlobalPlc->Write_IntDB(1080, 0, 99);
+    //GlobalPlc->DBWrite_Int(1080, 0, 99);
 
-    //int xintiao = GlobalPlc->Read_IntDB(1080, 0);
+    int xintiao = GlobalPlc->DBRead_Int(1080, 256);
     
-    //GlobalPlc->Write_StringDB(1080, 0, "BYD123", 6);
+    //GlobalPlc->DBWrite_String(1080, 0, "BYD123", 6);
 
-    std::string xintiao = GlobalPlc->Read_StringDB(1080, 0, 50);
+    //std::string xintiao = GlobalPlc->DBRead_String(1080, 0, 50);
 
     return 0;
 }

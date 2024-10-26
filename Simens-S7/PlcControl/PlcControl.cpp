@@ -46,9 +46,8 @@ int PlcControl::DBRead_Int(int DBNumber, int Start)
 {
 	int IntValue = -1;
 	byte res[256] = { 0 };
-	int status = mClient->DBRead(DBNumber, Start, 2, &res);
 	//byte[]转int
-	if (status == 0)
+	if (0 == mClient->DBRead(DBNumber, Start, 2, &res))
 	{
 		uint value = res[1] & 0xFF;  //PLC中int数据占2字节长度
 		value |= ((res[0] << 8) & 0xFF00);
@@ -76,7 +75,7 @@ bool PlcControl::DBWrite_Int(int DBNumber, int Start, int IntValue)
 	return CheckResult;
 }
 
-std::string PlcControl::Read_StringDB(int DBNumber, int Start, int PlcStringLength)
+std::string PlcControl::DBRead_String(int DBNumber, int Start, int PlcStringLength)
 {
 	//读取string 类型plc DB块  15是plc中定义的数据类型长度 17是数据类型长度+2（因为plc中前两个会有换行符）
 	char* test_string = (char*)malloc(PlcStringLength * sizeof(char));
@@ -88,7 +87,7 @@ std::string PlcControl::Read_StringDB(int DBNumber, int Start, int PlcStringLeng
 	return te;
 }
 
-bool PlcControl::Write_StringDB(int DBNumber, int Start, std::string StrVal, int PlcStringLength)
+bool PlcControl::DBWrite_String(int DBNumber, int Start, std::string StrVal, int PlcStringLength)
 {
 	int statue1 = -1;
 	int statue2 = -1;

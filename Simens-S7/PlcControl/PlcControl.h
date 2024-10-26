@@ -25,8 +25,8 @@ public:
 	bool PlcConnectInit();
 	int DBRead_Int(int DBNumber, int Start);
 	bool DBWrite_Int(int DBNumber, int Start, int IntValue);
-	std::string Read_StringDB(int DBNumber, int Start, int PlcStringLength);
-	bool Write_StringDB(int DBNumber, int Start, std::string StrVal, int PlcStringLength);
+	std::string DBRead_String(int DBNumber, int Start, int PlcStringLength);
+	bool DBWrite_String(int DBNumber, int Start, std::string StrVal, int PlcStringLength);
 
 public slots:
 
