@@ -7,7 +7,7 @@
 #include <QDebug>
 
 #include <iostream>
-#include <ctime>
+//#include <ctime>
 #include "../Model/Model.h"
 #include "snap7.h"
 #pragma comment(lib, "snap7.lib")
@@ -20,13 +20,12 @@ public:
 	PlcControl(QObject* parent);
 	~PlcControl();
 	bool isConnect = false;
-	int Read_DB = 1;
-	bool Read_PlcHead = false;
 	bool PlcConnectInit();
 	int DBRead_Int(int DBNumber, int Start);
 	bool DBWrite_Int(int DBNumber, int Start, int IntValue);
 	std::string DBRead_String(int DBNumber, int Start, int PlcStringLength);
 	bool DBWrite_String(int DBNumber, int Start, std::string StrVal, int PlcStringLength);
+
 
 public slots:
 

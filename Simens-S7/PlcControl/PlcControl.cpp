@@ -46,10 +46,10 @@ int PlcControl::DBRead_Int(int DBNumber, int Start)
 {
 	int IntValue = -1;
 	byte res[256] = { 0 };
-	//byte[]转int
+	// byte to int
 	if (0 == mClient->DBRead(DBNumber, Start, 2, &res))
 	{
-		uint value = res[1] & 0xFF;  //PLC中int数据占2字节长度
+		uint value = res[1] & 0xFF;  // Int occupies 2 bytese in PLC
 		value |= ((res[0] << 8) & 0xFF00);
 		IntValue = value;
 	}
@@ -58,26 +58,18 @@ int PlcControl::DBRead_Int(int DBNumber, int Start)
 
 bool PlcControl::DBWrite_Int(int DBNumber, int Start, int IntValue)
 {
-	bool CheckResult = false;
-	int status = -1;
+	bool ret = false;
 	byte data[2] = { 0 };
 	data[1] = (unsigned char)(0xff & IntValue);
 	data[0] = (unsigned char)((0xff00 & IntValue) >> 8);
-	status = mClient->DBWrite(DBNumber, Start, 2, &data);
-	if (status == 0)
-	{
-		CheckResult = true;
-	}
-	else
-	{
-		CheckResult = false;
-	}
-	return CheckResult;
+	if (0 == mClient->DBWrite(DBNumber, Start, 2, &data))
+		ret = true;
+	return ret;
 }
 
 std::string PlcControl::DBRead_String(int DBNumber, int Start, int PlcStringLength)
 {
-	//读取string 类型plc DB块  15是plc中定义的数据类型长度 17是数据类型长度+2（因为plc中前两个会有换行符）
+	//读取string 类型plc DB块  +2（因为plc中前两个会有换行符）s
 	char* test_string = (char*)malloc(PlcStringLength * sizeof(char));
 	int result = mClient->DBRead(DBNumber, Start, PlcStringLength + 2, test_string);
 	char* charBuffer = reinterpret_cast<char*>(test_string + 2);
@@ -92,7 +84,7 @@ bool PlcControl::DBWrite_String(int DBNumber, int Start, std::string StrVal, int
 	int statue1 = -1;
 	int statue2 = -1;
 	int statue3 = -1;
-	bool CheckResult = false;
+	bool ret = false;
 	char* buf;
 	int len_ = StrVal.length();
 	buf = (char*)malloc((len_ + 1) * sizeof(char));
@@ -106,12 +98,7 @@ bool PlcControl::DBWrite_String(int DBNumber, int Start, std::string StrVal, int
 	statue2 = mClient->DBWrite(DBNumber, Start + 1, 1, &string_size);  //第1位有效长度
 	statue3 = mClient->DBWrite(DBNumber, Start + 2, StringLength, buf);
 	if (statue1 == 0 && statue2 == 0 && statue3 == 0)
-	{
-		CheckResult = true;
-	}
-	else {
-		CheckResult = false;
-	}
-	return CheckResult;
+		ret = true;
+	return ret;
 }
 
