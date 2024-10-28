@@ -42,6 +42,8 @@ bool PlcControl::PlcConnectInit()
 
 int PlcControl::DBRead_Int(int DBNumber, int Start)
 {
+	std::lock_guard<std::mutex> lock(m_mtx);
+
 	byte res[2] = { 0 }; 
 	if (mClient->DBRead(DBNumber, Start, sizeof(res), res) == 0) 
 		return static_cast<int>((static_cast<unsigned int>(res[0]) << 8) | (res[1] & 0xFF));
@@ -50,6 +52,8 @@ int PlcControl::DBRead_Int(int DBNumber, int Start)
 
 bool PlcControl::DBWrite_Int(int DBNumber, int Start, int IntValue)
 {
+	std::lock_guard<std::mutex> lock(m_mtx);
+
 	byte data[2] = {
 	  static_cast<byte>((IntValue >> 8) & 0xFF), // high byte
 	  static_cast<byte>(IntValue & 0xFF)         // low byte
