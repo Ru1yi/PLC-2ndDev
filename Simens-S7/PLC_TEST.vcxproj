@@ -55,8 +55,8 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
-    <IncludePath>E:\Code\PLC\PLC_TEST\SnapLib;$(IncludePath)</IncludePath>
-    <LibraryPath>E:\Code\PLC\PLC_TEST\SnapLib;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(ProjectDir)PlcControl\inih-r58\cpp;$(ProjectDir)PlcControl\SnapLib;$(IncludePath)</IncludePath>
+    <LibraryPath>$(ProjectDir)PlcControl\SnapLib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
   </PropertyGroup>
@@ -87,17 +87,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="SnapLib\snap7.cpp" />
+    <ClCompile Include="PlcControl\inih-r58\cpp\INIReader.cpp" />
+    <ClCompile Include="PlcControl\inih-r58\ini.c" />
     <QtRcc Include="plc_test.qrc" />
     <QtUic Include="plc_test.ui" />
     <QtMoc Include="plc_test.h" />
     <ClCompile Include="Model\Model.cpp" />
     <ClCompile Include="PlcControl\PlcControl.cpp" />
+    <ClCompile Include="PlcControl\SnapLib\snap7.cpp" />
     <ClCompile Include="plc_test.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="PlcControl\PlcControl.h" />
+    <ClInclude Include="PlcControl\inih-r58\cpp\INIReader.h" />
+    <ClInclude Include="PlcControl\inih-r58\ini.h" />
+    <ClInclude Include="PlcControl\PlcControl.h" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="Model\Model.h" />

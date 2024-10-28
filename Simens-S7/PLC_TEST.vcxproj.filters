@@ -46,20 +46,32 @@
     <ClCompile Include="Model\Model.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SnapLib\snap7.cpp">
+    <ClCompile Include="PlcControl\inih-r58\cpp\INIReader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PlcControl\inih-r58\ini.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PlcControl\SnapLib\snap7.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="PlcControl\PlcControl.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
     <QtMoc Include="Model\Model.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SnapLib\snap7.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PlcControl\PlcControl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PlcControl\inih-r58\cpp\INIReader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PlcControl\inih-r58\ini.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
