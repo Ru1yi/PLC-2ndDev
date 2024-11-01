@@ -1,19 +1,24 @@
-#include "plc_test.h"
-#include <QtWidgets/QApplication>
 #include "PlcControl/PlcControl.h"
 
-int main(int argc, char *argv[])
+int main(int argc, char* argv[])
 {
-   GlobalPlc = new PlcControl();
-    bool ret = GlobalPlc->PlcConnectInit();
+	GlobalPlc = new PlcControl();
 
-    GlobalPlc->DBWrite_Int(1080, 264, 0);
+	try {
+		bool ret = GlobalPlc->PlcConnectInit();
 
-    //int xintiao = GlobalPlc->DBRead_Int(1080, 268);
-    
-    //GlobalPlc->DBWrite_String(1080, 0, "BYD12345", 50);
+		GlobalPlc->DBWrite_Int(1080, 264, 0);
 
-    //std::string xintiao = GlobalPlc->DBRead_String(1080, 0);
+		//int xintiao = GlobalPlc->DBRead_Int(1080, 268);
 
-    return 0;
+		//GlobalPlc->DBWrite_String(1080, 0, "BYD12345", 50);
+
+		//std::string xintiao = GlobalPlc->DBRead_String(1080, 0);
+	}
+	catch (std::exception& e)
+	{
+
+	}
+
+	return 0;
 }

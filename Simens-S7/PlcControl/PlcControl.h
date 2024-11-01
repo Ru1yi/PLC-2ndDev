@@ -28,7 +28,6 @@ private:
 	int rack;
 	int slot;
 	std::string ip_str;
-	
 };
 
 extern PlcControl* GlobalPlc;

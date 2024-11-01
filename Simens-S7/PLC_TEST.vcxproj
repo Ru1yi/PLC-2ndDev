@@ -93,7 +93,7 @@
     <ClCompile Include="PlcControl\inih-r58\ini.c" />
     <QtRcc Include="plc_test.qrc" />
     <QtUic Include="plc_test.ui" />
-    <QtMoc Include="plc_test.h" />
+    <ClInclude Include="plc_test.h" />
     <ClCompile Include="Model\Model.cpp" />
     <ClCompile Include="PlcControl\PlcControl.cpp" />
     <ClCompile Include="PlcControl\SnapLib\snap7.cpp" />
