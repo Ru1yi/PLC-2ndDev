@@ -7,17 +7,19 @@ int main(int argc, char* argv[])
 	try {
 		bool ret = GlobalPlc->PlcConnectInit();
 
-		GlobalPlc->DBWrite_Int(1080, 264, 0);
+		GlobalPlc->DBWrite_Int(1080, 262, 1);
 
-		//int xintiao = GlobalPlc->DBRead_Int(1080, 268);
+		/*int xintiao = GlobalPlc->DBRead_Int(1080, 262);
+		std::cout << "Read int: " << xintiao << "\n";*/
 
 		//GlobalPlc->DBWrite_String(1080, 0, "BYD12345", 50);
 
-		//std::string xintiao = GlobalPlc->DBRead_String(1080, 0);
+		//std::string sn = GlobalPlc->DBRead_String(1080, 0);
+		//std::cout << "Read string: " << sn << "\n";
 	}
 	catch (std::exception& e)
 	{
-
+		std::cout << e.what() << std::endl;
 	}
 
 	return 0;

@@ -6,6 +6,7 @@
 
 #include "snap7.h"
 #include "inih-r58/cpp/INIReader.h"
+#include "../IVT/IVTException.h"
 
 #pragma comment(lib, "snap7.lib")
 
@@ -28,6 +29,7 @@ private:
 	int rack;
 	int slot;
 	std::string ip_str;
+	
 };
 
 extern PlcControl* GlobalPlc;

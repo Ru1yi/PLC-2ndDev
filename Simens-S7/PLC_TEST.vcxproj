@@ -71,7 +71,7 @@
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
@@ -93,14 +93,13 @@
     <ClCompile Include="PlcControl\inih-r58\ini.c" />
     <QtRcc Include="plc_test.qrc" />
     <QtUic Include="plc_test.ui" />
-    <ClInclude Include="plc_test.h" />
     <ClCompile Include="Model\Model.cpp" />
     <ClCompile Include="PlcControl\PlcControl.cpp" />
     <ClCompile Include="PlcControl\SnapLib\snap7.cpp" />
-    <ClCompile Include="plc_test.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="IVT\IVTException.h" />
     <ClInclude Include="PlcControl\inih-r58\cpp\INIReader.h" />
     <ClInclude Include="PlcControl\inih-r58\ini.h" />
     <ClInclude Include="PlcControl\PlcControl.h" />
