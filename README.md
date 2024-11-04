@@ -7,7 +7,7 @@ PLC communication library packaged according to different protocols.
 // example
 
 try {
-  // GlobalPlc->DBRead_Int();
+  // GlobalPlc->DBRead_Int(DBnumber, start);
 }
 catch(const std::exception& e) {
   // std::cout<<e.what()<<"\n";
